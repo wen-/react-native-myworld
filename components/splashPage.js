@@ -98,26 +98,27 @@ class SplashPage extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            index:0
+            index:0,
+            over:false,
         }
     }
 
     componentWillMount(){
-        storage.load({
-            key: 'showSplash',
-        }).then(ret => {
-            if(!ret){
-                SplashScreen.hide();
-                Actions.主界面();
-            }
-        }).catch(err => {
-            SplashScreen.hide();
-            storage.save({
-                key: 'showSplash',
-                data: false
-            });
-        });
-
+        // storage.load({
+        //     key: 'showSplash',
+        // }).then(ret => {
+        //     if(!ret){
+        //         SplashScreen.hide();
+        //         Actions.主界面();
+        //     }
+        // }).catch(err => {
+        //     SplashScreen.hide();
+        //     storage.save({
+        //         key: 'showSplash',
+        //         data: false
+        //     });
+        // });
+        SplashScreen.hide();
     }
 
     componentDidMount(){
@@ -135,29 +136,37 @@ class SplashPage extends React.Component {
 
     render() {
         return (
-            <Swiper style={splash.container}
-                    dot={<View style={{backgroundColor: 'rgba(255,255,255,.3)', width: 13, height: 13, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
-                    activeDot={<View style={{backgroundColor: '#fff', width: 30, height: 13, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
-                    paginationStyle={{
-                        bottom: 50
-                    }}
+            <Swiper  showsPagination={true}
+                     dot={<View style={{backgroundColor: 'rgba(255,255,255,.3)', width: 13, height: 13, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
+                     activeDot={<View style={{backgroundColor: '#fff', width: 30, height: 13, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
+                     paginationStyle={{
+                         bottom: 50
+                     }}
                     loop={false}
                     onMomentumScrollEnd = {(e,s,c)=>{
-                        this.state.index = s.index;
+                        //this.state.index = s.index;
+                        console.log("onMomentumScrollEnd");
                     }}
                     onTouchStartCapture = {(e,s,c)=>{
+                        this.state.index = s.index;
                         if(this.state.index == 2){
+                            //Actions.主界面();
+                        }
+                        console.log("onTouchStartCapture");
+                    }}
+                    onTouchStart = {(e,s,c)=>{
+                        console.log("onTouchStart",s);
+                        this.state.over = true;
+                    }}
+                    onTouchEnd = {(e,s,c)=>{
+                        console.log("onTouchEnd:",s);
+                        if(this.state.index == 2 && this.state.over){
                             Actions.主界面();
                         }
                     }}
-                    onTouchStart = {(e,s,c)=>{
-                        //code
-                    }}
-                    onTouchEnd = {(e,s,c)=>{
-                        //code
-                    }}
                     onResponderRelease = {(e,s,c)=>{
-                        //code
+                        console.log("onResponderRelease");
+                        this.state.over = false;
                     }}>
                 <View style={splash.slide}>
                     <Image
@@ -184,13 +193,12 @@ class SplashPage extends React.Component {
 
 const splash = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#eee',
+
     },
     slide: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: 'transparent'
     },
     image: {

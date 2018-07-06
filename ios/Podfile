@@ -6,7 +6,7 @@ def pods
   pod 'UMCPush'
 end
 
-target 'examples' do
+target 'myworld' do
   pods
 
 end

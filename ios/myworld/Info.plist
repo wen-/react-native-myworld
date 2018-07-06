@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AES_KEY</key>
+	<string>FO1KQXmtxhlA6PKF</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>模版APP</string>
+	<string>我的世界</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,8 +30,8 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -39,10 +41,14 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>为了更好的为您提供服务，请点击“允许”以允许访问。</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>为了更好的为您提供服务，请点击“允许”以允许访问。</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>为了更好的为您提供服务，请点击“允许”以允许访问。</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>assets/fonts/Entypo.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -57,19 +63,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>assets/fonts/Entypo.ttf</string>
-	</array>
-	<key>百度统计AppId</key>
-	<string>d4faf80bfb</string>
 	<key>友盟推送AppKey</key>
 	<string>5afd422ff43e487b54000083</string>
 	<key>域名</key>
 	<string>https://wen-xiong.github.io/api/</string>
+	<key>百度统计AppId</key>
+	<string>d4faf80bfb</string>
 	<key>项目名称</key>
-	<string>模版APP</string>
-	<key>AES_KEY</key>
-	<string>FO1KQXmtxhlA6PKF</string>
+	<string>我的世界</string>
 </dict>
 </plist>
