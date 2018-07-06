@@ -1,0 +1,98 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.myworld"
+	android:versionCode="1"
+	android:versionName="1.0">
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+	<!--百度统计-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<!--百度统计结束-->
+
+	<uses-sdk
+		android:minSdkVersion="16"
+		android:targetSdkVersion="22" />
+
+	<application
+		android:name="com.myworld.MainApplication"
+		android:allowBackup="true"
+		android:label="@string/app_name"
+		android:icon="@mipmap/${ic_launcher}"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name="com.myworld.MainActivity"
+			android:label="@string/app_name"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+			android:windowSoftInputMode="adjustResize"
+			android:theme="@style/SplashScreen_Fullscreen">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+				<action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
+		<!--百度统计-->
+		<!-- 您从百度网站获取的APP KEY，根据实际您的APP申请的APP_KEY进行修改 -->
+		<meta-data
+			android:name="BaiduMobAd_STAT_ID"
+			android:value="${BAIDU_APP_ID}" />
+		<!-- 渠道商编号 -->
+		<meta-data
+			android:name="BaiduMobAd_CHANNEL"
+			android:value="Baidu Market" />
+		<!-- 是否开启错误日志统计，默认为false -->
+		<meta-data
+			android:name="BaiduMobAd_EXCEPTION_LOG"
+			android:value="true" />
+		<!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
+		<meta-data
+			android:name="BaiduMobAd_SEND_STRATEGY"
+			android:value="APP_START" />
+		<!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔(取消下行注释)。取值为1-24的整数，默认为1 -->
+		<!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="2" /> -->
+		<!-- 日志仅在wifi网络下发送，默认为false -->
+		<meta-data
+			android:name="BaiduMobAd_ONLY_WIFI"
+			android:value="false" />
+		<!-- 是否获取基站位置信息 ,默认为true -->
+		<meta-data
+			android:name="BaiduMobAd_CELL_LOCATION"
+			android:value="true" />
+		<!-- 是否获取GPS位置信息，默认为true -->
+		<meta-data
+			android:name="BaiduMobAd_GPS_LOCATION"
+			android:value="true" />
+		<!-- 是否获取WIFI位置信息，默认为true -->
+		<meta-data
+			android:name="BaiduMobAd_WIFI_LOCATION"
+			android:value="true" />
+		<!--百度统计结束-->
+		<!-- 友盟配置开始 -->
+		<meta-data
+			android:name="UMENG_APPKEY"
+			android:value="${UMENG_APPKEY}">
+		</meta-data>
+		<meta-data
+			android:name="UMENG_MESSAGE_SECRET"
+			android:value="${UMENG_MESSAGE_SECRET}">
+		</meta-data>
+		<meta-data
+			android:name="UMENG_CHANNEL"
+			android:value="${UMENG_CHANNEL}" />
+		<!-- 友盟配置结束 -->
+
+		<activity android:name="com.myworld.SysPushActivity" android:launchMode="singleTask" android:exported="true" />
+	</application>
+
+</manifest>

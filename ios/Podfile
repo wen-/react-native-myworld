@@ -1,0 +1,13 @@
+platform :ios, '8.0'
+
+def pods
+  pod 'UMCCommon'
+  pod 'UMCSecurityPlugins'
+  pod 'UMCPush'
+end
+
+target 'examples' do
+  pods
+
+end
+

@@ -1,0 +1,25 @@
+PODS:
+  - UMCCommon (1.5.1)
+  - UMCPush (3.2.1):
+    - UMCCommon
+  - UMCSecurityPlugins (1.0.6)
+
+DEPENDENCIES:
+  - UMCCommon
+  - UMCPush
+  - UMCSecurityPlugins
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - UMCCommon
+    - UMCPush
+    - UMCSecurityPlugins
+
+SPEC CHECKSUMS:
+  UMCCommon: 16b674e9de0616d3a6128c551348a686d869c3c7
+  UMCPush: 6a56ca259e934043a491283a88b1699596ea1a18
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+
+PODFILE CHECKSUM: 857b74803ca5a7f1ac2182f20aad734a47493c10
+
+COCOAPODS: 1.5.3
