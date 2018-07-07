@@ -20,7 +20,7 @@
 		"react-native-router-flux": "^4.0.0-beta.31",
 		"react-native-spinkit": "^1.1.1",
 		"react-native-storage": "^0.2.2",
-		"react-native-swiper": "1.5.13",
+		"react-native-swiper": "git+https://github.com/wen-/react-native-swiper.git#35b7e5f62227be0906cc09a522aa343629ccbfdc",
 		"react-native-umeng-push": "git+https://github.com/wen-/react-native-umeng-push.git",
 		"react-native-vector-icons": "^4.6.0",
 		"rn-fetch-blob": "^0.10.11"

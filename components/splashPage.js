@@ -100,6 +100,7 @@ class SplashPage extends React.Component {
         this.state={
             index:0,
             over:false,
+            showsPagination:true,
         }
     }
 
@@ -136,7 +137,8 @@ class SplashPage extends React.Component {
 
     render() {
         return (
-            <Swiper  showsPagination={true}
+            <Swiper ref={"轮播组件"}
+                showsPagination={this.state.showsPagination}
                      dot={<View style={{backgroundColor: 'rgba(255,255,255,.3)', width: 13, height: 13, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
                      activeDot={<View style={{backgroundColor: '#fff', width: 30, height: 13, borderRadius: 7, marginLeft: 7, marginRight: 7}} />}
                      paginationStyle={{
@@ -144,14 +146,16 @@ class SplashPage extends React.Component {
                      }}
                     loop={false}
                     onMomentumScrollEnd = {(e,s,c)=>{
-                        //this.state.index = s.index;
+                        this.state.index = s.index;
+                        if(this.state.index == 2){
+                            this.setState({showsPagination : false});
+                        }else{
+                            this.setState({showsPagination : true});
+                        }
                         console.log("onMomentumScrollEnd");
                     }}
                     onTouchStartCapture = {(e,s,c)=>{
-                        this.state.index = s.index;
-                        if(this.state.index == 2){
-                            //Actions.主界面();
-                        }
+                        this.state.index = s && s.index;
                         console.log("onTouchStartCapture");
                     }}
                     onTouchStart = {(e,s,c)=>{
@@ -163,10 +167,6 @@ class SplashPage extends React.Component {
                         if(this.state.index == 2 && this.state.over){
                             Actions.主界面();
                         }
-                    }}
-                    onResponderRelease = {(e,s,c)=>{
-                        console.log("onResponderRelease");
-                        this.state.over = false;
                     }}>
                 <View style={splash.slide}>
                     <Image
@@ -183,7 +183,9 @@ class SplashPage extends React.Component {
                 <View style={splash.slide}>
                     <Image
                         style={splash.image}
-                        source={require('../assets/images/banner3.jpg')} />
+                        source={require('../assets/images/banner3.jpg')}
+                    />
+                    <Text style={splash.in}>进入</Text>
                 </View>
             </Swiper>
         );
@@ -204,6 +206,17 @@ const splash = StyleSheet.create({
     image: {
         width,
         height,
+    },
+    in:{
+        position:"absolute",
+        bottom:40,
+        paddingLeft:40,
+        paddingRight:40,
+        paddingBottom:10,
+        paddingTop:10,
+        backgroundColor:"#fff",
+        color:"#333",
+        borderRadius:40,
     }
 });
 
