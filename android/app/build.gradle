@@ -143,13 +143,13 @@ android {
             manifestPlaceholders = [
                     ic_launcher         : "ic_launcher",
                     UMENG_CHANNEL       : "正式服",
-                    UMENG_APPKEY        : "5b25deb7f43e4801630003fb",
-                    UMENG_MESSAGE_SECRET: "cee71af1347ad461016caf11e1078326",
-                    BAIDU_APP_ID        : "999d5d31d6"
+                    UMENG_APPKEY        : "5b40769df29d986a11000394",
+                    UMENG_MESSAGE_SECRET: "c6ad3a1d55a873df60b41fa31dc47127",
+                    BAIDU_APP_ID        : "57df433c1a"
             ]
             buildConfigField "String", "启动背景图", "\"splash_bg\""
             buildConfigField "String", "启动背景图LOGO", "\"splash_info\""
-            buildConfigField "String", "RN版本更新密钥", "\"_X08yZULBxOdtmTsEB-EnnOb-szA6494e6f1-996e-4be3-ac6d-7701a4fd4683\""
+            buildConfigField "String", "RN版本更新密钥", "\"my-eU5XPFAsP3vaNR9QTkYmDQN8Z6494e6f1-996e-4be3-ac6d-7701a4fd4683\""
             buildConfigField "String", "小米AppKey", "\"\""
             buildConfigField "String", "小米AppID", "\"\""
             buildConfigField "String", "项目名称", "\"我的世界\""

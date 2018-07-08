@@ -209,7 +209,7 @@ const splash = StyleSheet.create({
     },
     in:{
         position:"absolute",
-        bottom:40,
+        bottom:80,
         paddingLeft:40,
         paddingRight:40,
         paddingBottom:10,

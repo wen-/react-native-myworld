@@ -93,11 +93,11 @@ export default class CustomNavBar extends React.Component {
     }
 
     _renderRight() {
-        if (Actions.currentScene === '我的') {
+        if (Actions.currentScene === '主界面') {
             return (
                 <View style={[styles.navBarRightItem, { flexDirection: 'row', justifyContent: 'flex-end' }]}>
                     <TouchableOpacity
-                        onPress={() => {Actions.编辑个人资料()}}
+                        onPress={() => {Actions.edit()}}
                         style={{ paddingRight: 10,justifyContent: 'center' }}>
                         <Icon name={"new-message"} size={20} color={'#000'} />
                     </TouchableOpacity>

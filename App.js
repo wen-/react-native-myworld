@@ -25,6 +25,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import storage from './components/utils/storageUtil';
 
 import home from './components/home/'
+import edit from './components/edit/'
 import customNavBar from './components/customNav/'
 import splashPage from "./components/splashPage";
 
@@ -103,6 +104,7 @@ export default class App extends Component{
                     >
                         <Scene key="启动页" component={splashPage} title="启动" initial direction="fade"/>
                         <Scene key="主界面" component={home} title="我的世界" hideNavBar={false} navBar={customNavBar} />
+                        <Scene key="edit" component={edit} title="写的什么吧" hideNavBar={false} navBar={customNavBar} />
 
                     </Scene>
                 </Overlay>

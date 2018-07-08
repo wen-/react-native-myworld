@@ -21,6 +21,8 @@
 		"react-native-spinkit": "^1.1.1",
 		"react-native-storage": "^0.2.2",
 		"react-native-swiper": "git+https://github.com/wen-/react-native-swiper.git#35b7e5f62227be0906cc09a522aa343629ccbfdc",
+		"react-native-textinput-effects": "^0.4.2",
+		"react-native-timeline-listview": "git+https://github.com/wen-/react-native-timeline-listview.git#5ef0193b0fa969ec18e70ab1e9880d389e8fa317",
 		"react-native-umeng-push": "git+https://github.com/wen-/react-native-umeng-push.git",
 		"react-native-vector-icons": "^4.6.0",
 		"rn-fetch-blob": "^0.10.11"
