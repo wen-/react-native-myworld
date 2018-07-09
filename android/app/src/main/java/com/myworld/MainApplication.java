@@ -2,6 +2,7 @@ package com.myworld;
 
 import com.baidu.mobstat.StatService;
 import com.facebook.react.ReactApplication;
+import io.realm.react.RealmReactPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.RNFetchBlob.RNFetchBlobPackage;
@@ -41,6 +42,7 @@ public class MainApplication extends UmengPushApplication implements ReactApplic
 			return Arrays.<ReactPackage>asList(
 					new SplashScreenReactPackage(),
 					new MainReactPackage(),
+                    new RealmReactPackage(),
 					new RNSpinkitPackage(),
 					new RNDeviceInfo(),
 					new RNFetchBlobPackage(),

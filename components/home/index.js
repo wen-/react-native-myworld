@@ -22,6 +22,8 @@ import Timeline from 'react-native-timeline-listview'
 
 import Spinkit from 'react-native-spinkit';
 
+import Realm from '../model/'
+
 var styles = {
     container: {
         flex: 1,

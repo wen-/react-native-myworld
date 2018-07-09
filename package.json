@@ -25,6 +25,7 @@
 		"react-native-timeline-listview": "git+https://github.com/wen-/react-native-timeline-listview.git#5ef0193b0fa969ec18e70ab1e9880d389e8fa317",
 		"react-native-umeng-push": "git+https://github.com/wen-/react-native-umeng-push.git",
 		"react-native-vector-icons": "^4.6.0",
+		"realm": "^2.12.0",
 		"rn-fetch-blob": "^0.10.11"
 	},
 	"devDependencies": {

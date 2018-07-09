@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TextInput } from 'react-native';
 
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
@@ -37,22 +37,9 @@ export default class extends Component {
             s = {flex:1}
         }
         return (
-            <View style={{flex:1,padding:10}}>
-                <Jiro
-                    label={'我不是标题党'}
-                    borderColor={'#9b537a'}
-                    inputStyle={{ color: 'white' }}
-                    onChangeText={(text) => { this.setState({标题: text}) }}
-                />
-                <Jiro
-                    label={'说点什么呢？'}
-                    style={s}
-                    borderColor={'#b57830'}
-                    inputStyle={[{ color: 'white' },s]}
-                    multiline={true}
-                    onChangeText={(text) => { this.setState({内容: text}) }}
-                    //onFocus={()=>{this.setState({尺寸:true})}}
-                />
+            <View style={{flex:1,padding:10,flexDirection:"row"}}>
+                <TextInput placeholder={"标题不是必需的"} style={{backgroundColor:"#fff",marginBottom:20}}/>
+                <TextInput placeholder={"写点什么呢？"} style={{flex:1,backgroundColor:"#fff"}} />
             </View>
         );
     }

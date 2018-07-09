@@ -184,6 +184,7 @@ dependencies {
     implementation project(':react-native-device-info')
     implementation project(':rn-fetch-blob')
     implementation project(':react-native-spinkit')
+    implementation project(':realm')
     implementation "com.android.support:appcompat-v7:23.0.1"
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.baidu.mobstat:mtj-sdk:latest.integration'  //百度统计

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -35,6 +34,7 @@
 		B153C80981D748E3BF8A3623 /* libRCTUmengPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5A02EA65664BD68F81E88D /* libRCTUmengPush.a */; };
 		DB8AD5895C1118DDD37459EE /* libPods-myworld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D15067C580EA41170ED5F2C8 /* libPods-myworld.a */; };
 		F80B18127F3040FCAC2F9FCA /* libRCTBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E20B3A0A4742F292BF819E /* libRCTBaiduMobStat.a */; };
+		FB708464C5CE4DACA65287F5 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B04175E19B4ED3B237D212 /* libRealmReact.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +385,8 @@
 		D15067C580EA41170ED5F2C8 /* libPods-myworld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myworld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF632F6536430536DB68C567 /* Pods-myworld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myworld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myworld/Pods-myworld.debug.xcconfig"; sourceTree = "<group>"; };
 		F13D59DAA278C4D921F668D6 /* Pods-myworld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myworld.release.xcconfig"; path = "Pods/Target Support Files/Pods-myworld/Pods-myworld.release.xcconfig"; sourceTree = "<group>"; };
+		55BF025E8D4E4D25B28EE44D /* RealmReact.xcodeproj */ = {isa = PBXFileReference; name = "RealmReact.xcodeproj"; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		A7B04175E19B4ED3B237D212 /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +415,7 @@
 				F80B18127F3040FCAC2F9FCA /* libRCTBaiduMobStat.a in Frameworks */,
 				B153C80981D748E3BF8A3623 /* libRCTUmengPush.a in Frameworks */,
 				DB8AD5895C1118DDD37459EE /* libPods-myworld.a in Frameworks */,
+				FB708464C5CE4DACA65287F5 /* libRealmReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +596,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				5FEB64890AB24FA5BC0E4A21 /* RCTBaiduMobStat.xcodeproj */,
 				A348F89A4FB6401682526630 /* RCTUmengPush.xcodeproj */,
+				55BF025E8D4E4D25B28EE44D /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1199,6 +1203,7 @@
 					"$(SRCROOT)/../node_modules/baidumobstat-react-native/ios/RCTBaiduMobStat/RCTBaiduMobStat",
 					"$(SRCROOT)/../node_modules/react-native-umeng-push/ios/RCTUmengPush",
 					"$(SRCROOT)/../node_modules/react-native-umeng-push/ios/RCTUmengPush",
+					"$(SRCROOT)\..\node_modules\realm\src/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/myworld/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1211,6 +1216,10 @@
 				PRODUCT_NAME = myworld;
 				VALID_ARCHS = arm64;
 				VERSIONING_SYSTEM = "apple-generic";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/myworld\"",
+				);
 			};
 			name = Debug;
 		};
@@ -1228,6 +1237,7 @@
 					"$(SRCROOT)/../node_modules/baidumobstat-react-native/ios/RCTBaiduMobStat/RCTBaiduMobStat",
 					"$(SRCROOT)/../node_modules/react-native-umeng-push/ios/RCTUmengPush",
 					"$(SRCROOT)/../node_modules/react-native-umeng-push/ios/RCTUmengPush",
+					"$(SRCROOT)\..\node_modules\realm\src/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/myworld/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1240,6 +1250,10 @@
 				PRODUCT_NAME = myworld;
 				VALID_ARCHS = arm64;
 				VERSIONING_SYSTEM = "apple-generic";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/myworld\"",
+				);
 			};
 			name = Release;
 		};
