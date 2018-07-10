@@ -103,6 +103,16 @@ export default class CustomNavBar extends React.Component {
                     </TouchableOpacity>
                 </View>
             )
+        }else if (Actions.currentScene === 'edit') {
+            return (
+                <View style={[styles.navBarRightItem, { flexDirection: 'row', justifyContent: 'flex-end' }]}>
+                    <TouchableOpacity
+                        onPress={() => {DeviceEventEmitter.emit('保存日志')}}
+                        style={{ paddingRight: 10,justifyContent: 'center' }}>
+                        <Icon name={"save"} size={20} color={'#000'} />
+                    </TouchableOpacity>
+                </View>
+            )
         } else {
             return null;
         }

@@ -22,8 +22,6 @@ import Timeline from 'react-native-timeline-listview'
 
 import Spinkit from 'react-native-spinkit';
 
-import Realm from '../model/'
-
 var styles = {
     container: {
         flex: 1,
@@ -82,7 +80,7 @@ export default class extends Component {
             waiting: false,
             data: this.data
         };
-        this.loadHandle = this.loadHandle.bind(this)
+
     }
     componentDidMount(){
         //this.check();
@@ -100,14 +98,6 @@ export default class extends Component {
             console.error('打开外部地址出错了:', err);
         });
     };
-
-    loadHandle (i) {
-        let loadQueue = this.state.loadQueue
-        loadQueue[i] = 1
-        this.setState({
-            loadQueue
-        })
-    }
 
     check(){
         let _模态框配置 = this.state.模态框配置;
