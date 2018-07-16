@@ -19,6 +19,8 @@ import {c_download_file, c_openfile} from "../utils/common";
 import {模态框样式} from "../styles";
 
 import Timeline from 'react-native-timeline-listview'
+import {CustomModal} from '../utils/customModal'
+import {Realm,m_getNote} from '../model/'
 
 import Spinkit from 'react-native-spinkit';
 
@@ -83,7 +85,7 @@ export default class extends Component {
 
     }
     componentDidMount(){
-        //this.check();
+        this.check();
         this.onEndReached();
     }
     jump = (link)=>{
@@ -113,9 +115,9 @@ export default class extends Component {
                 _模态框配置.显示 = true;
                 _模态框配置.文本 = "发现新版本：\\n"+ res.更新内容;
                 if(res.强制更新 == "是"){
-                    _模态框配置.按钮配置 = [{"文字":"立即更新","事件":"立即更新","参数":res.地址}];
+                    _模态框配置.按钮配置 = [{"文字":"立即更新","事件":this.立即更新.bind(this),"参数":res.地址}];
                 }else{
-                    _模态框配置.按钮配置 = [{"文字":"下次再说","事件":"隐藏模态框"},{"文字":"立即更新","事件":"立即更新","参数":res.地址}];
+                    _模态框配置.按钮配置 = [{"文字":"下次再说","事件":this.隐藏模态框.bind(this)},{"文字":"立即更新","事件":this.立即更新.bind(this),"参数":res.地址}];
                 }
                 this.自动隐藏模态框 &&　clearTimeout(this.自动隐藏模态框);
                 this.setState({模态框配置:_模态框配置,更新内容:res});
@@ -185,20 +187,26 @@ export default class extends Component {
             this.setState({waiting: true});
 
             //fetch and concat data
-            setTimeout(() => {
-
-                //refresh to initial data
-                var data = this.state.data.concat(
-                    [
-                        {time: '2018-07-08', title: '第一次记录', description: '记录生活中的点点滴滴！'}
-                    ]
-                )
-
+            m_getNote("note","",function (data) {
                 this.setState({
                     waiting: false,
                     data: data,
                 });
-            }, 2000);
+            });
+            // setTimeout(() => {
+            //
+            //     //refresh to initial data
+            //     var data = this.state.data.concat(
+            //         [
+            //             {time: '2018-07-08', title: '第一次记录', description: '记录生活中的点点滴滴！'}
+            //         ]
+            //     )
+            //
+            //     this.setState({
+            //         waiting: false,
+            //         data: data,
+            //     });
+            // }, 2000);
         }
     }
 
@@ -300,48 +308,7 @@ export default class extends Component {
                     renderTime={this.renderTime}
                 />
 
-                <View>
-                    <Modal visible={this.state.模态框配置.显示}
-                           animationType={'fade'}
-                           transparent = {true}
-                           onRequestClose={()=> this.隐藏模态框()} >
-                        <View style={模态框样式.背景色}>
-                            <View style={模态框样式.主体}>
-                                <View style={模态框样式.文本框}>
-                                    {
-                                        this.state.模态框配置.文本.split('\\n').map((item, i)=>{
-                                            let marginT = i==1?{marginTop:10}:{};
-                                            return(
-                                                <Text style={[模态框样式.文本内容,marginT]} key={i}>{item}</Text>
-                                            )
-                                        })
-                                    }
-                                </View>
-
-                                {
-                                    this.state.模态框配置.按钮配置?
-                                        <View style={模态框样式.底部}>
-                                            {
-                                                this.state.模态框配置.按钮配置.map((item, i) => {
-                                                    let s = i>0?{borderLeftWidth:.5,borderColor:"#e5e5e5"}:{};
-                                                    return (
-                                                        <TouchableOpacity
-                                                            style={[模态框样式.按钮,s]}
-                                                            underlayColor="#aaa"
-                                                            onPress={()=>{this[item.事件](item.参数)}}
-                                                            key={i}>
-                                                            <Text style={{color:'#555'}}>{item.文字}</Text>
-                                                        </TouchableOpacity>
-                                                    )
-                                                })
-                                            }
-                                        </View>:null
-                                }
-
-                            </View>
-                        </View>
-                    </Modal>
-                </View>
+                <CustomModal {...this.state.模态框配置} 隐藏模态框={this.隐藏模态框.bind(this)} />
             </View>
         );
 

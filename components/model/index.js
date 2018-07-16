@@ -1,19 +1,19 @@
 const Realm = require('realm');
 const version = 1;
 
-const m_saveNote = function (data,callback) {
-    //定义表名及表结构
-    const noteSchema = {
-        name: 'note',
-        primaryKey:'id',
-        properties: {
-            id: {type:'string',},
-            changeTime: 'date?',
-            title:  'string?',
-            content: {type:'string',indexed: true}
-        }
-    };
+//定义表名及表结构
+const noteSchema = {
+    name: 'note',
+    primaryKey:'id',
+    properties: {
+        id: {type:'string',},
+        changeTime: 'date?',
+        title:  'string?',
+        content: {type:'string',indexed: true}
+    }
+};
 
+const m_saveNote = function (data,callback) {
 
     // ==多版本更新==
     // const schemas = [
@@ -30,7 +30,7 @@ const m_saveNote = function (data,callback) {
     Realm.open({
         schema: [noteSchema],
         schemaVersion: version,
-        deleteRealmIfMigrationNeeded:true,//该属性开发使用，会删除之前建立的所有表，重新开始
+        //deleteRealmIfMigrationNeeded:true,//该属性开发使用，会删除之前建立的所有表，重新开始
         //单版本更新
         // migration: (oldRealm, newRealm) => {
         //     // 小于当前版本才执行
@@ -54,25 +54,16 @@ const m_saveNote = function (data,callback) {
             });
             callback(note);
         });
+        realm.close();
     }).catch(error => {
         console.log(error);
     });
 }
 
 const m_updateNote = function (data,callback) {
-    //定义表名及表结构
-    const noteSchema = {
-        name: 'note',
-        primaryKey:'id',
-        properties: {
-            id: {type:'string',},
-            changeTime: 'date?',
-            title:  'string?',
-            content: {type:'string',indexed: true},
-        }
-    };
     Realm.open({
-        schema: [noteSchema]
+        schema: [noteSchema],
+        schemaVersion: version,
     }).then(realm => {
         realm.write(() => {
             let teamDate = {};
@@ -87,14 +78,27 @@ const m_updateNote = function (data,callback) {
             const note = realm.create('note', teamDate,true);
             callback(note);
         });
+        realm.close();
     }).catch(error => {
         console.log(error);
     });
 }
 
-const m_getNote = function (name, search) {
-    const notes = realm.objects(name).filtered(search);
-    return notes;
+const m_getNote = function (name, search,callback) {
+    if(typeof search == "function"){
+        callback = search;
+        search = "";
+    };
+    Realm.open({
+        schema: [noteSchema],
+        schemaVersion: version,
+    }).then(realm => {
+        const notes = realm.objects(name).filtered(search?search:"");
+        callback(notes);
+        realm.close();
+    }).catch(error => {
+        console.log(error);
+    });
 }
 
 export {Realm,m_saveNote,m_getNote}
